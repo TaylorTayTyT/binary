@@ -1,18 +1,46 @@
-import logo from './logo.svg';
+
 import './App.css';
 import toReverseBinary from './reverseBinary';
 import { useState, useEffect } from 'react';
-import { isCompositeComponent } from 'react-dom/test-utils';
+import { Container } from "@material-ui/core";
 
 function App() {
+  const [reload, setReload] = useState(false);
   const handleSubmit = () => {
-    console.log("hi");
-    console.log(document.getElementById("submission").value);
+    setReload(!reload);
   }
+  let a = (<></>);
+  if (document.getElementById("submission")) {
+    //creates the binary and reverses it
+    let inputtedValue = parseInt(document.getElementById("submission").value);
+    let reversedBinary = toReverseBinary(inputtedValue);
+    let reversedBinaryInt = parseInt(reversedBinary, 2);
+
+    if(!reversedBinaryInt) {
+      reversedBinaryInt = "";
+      reversedBinary = "Invalid Input";
+    } 
+
+    a = (
+      <div>
+        <h1> {reversedBinary} </h1>
+        <h1>{reversedBinaryInt}</h1>
+      </div>
+    );
+  }
+
   return (
     <div className="App">
-        <input type="text" name="submission" id="submission" placeholder='integer here'/>
-        <button onClick={handleSubmit}>Submit</button>
+      <div className='header'>
+        <div className='title'> 
+          <h1>Reverse Binomial Calculator</h1>
+        </div>
+      </div>
+      
+      <input type="text" name="submission" id="submission" placeholder='integer here' />
+      <br></br>
+      <button onClick={handleSubmit} name = "submit">Submit</button>
+      {a}
     </div>
   );
 }
