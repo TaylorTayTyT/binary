@@ -23,8 +23,8 @@ function App() {
 
     a = (
       <div>
-        <h1> {reversedBinary} </h1>
-        <h1>{reversedBinaryInt}</h1>
+        <h1> reversedBinary: {reversedBinary} </h1>
+        <h1> Integer value: {reversedBinaryInt}</h1>
       </div>
     );
   }
