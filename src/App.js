@@ -16,7 +16,7 @@ function App() {
     let reversedBinary = toReverseBinary(inputtedValue);
     let reversedBinaryInt = parseInt(reversedBinary, 2);
 
-    if(!reversedBinaryInt) {
+    if(reversedBinaryInt != 0 && !reversedBinaryInt) {
       reversedBinaryInt = "";
       reversedBinary = "Invalid Input";
     } 
